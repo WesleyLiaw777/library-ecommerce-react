@@ -8,25 +8,26 @@ const Books = ({ books: initialBooks }) => {
   function filterBooks(filter) {
     if (filter === "LOW_TO_HIGH") {
       setBooks(
-        books.slice().sort(
-          (a, b) =>
-            (a.salePrice || a.originalPrice) - (b.salePrice || b.originalPrice)
-        )
+        books
+          .slice()
+          .sort(
+            (a, b) =>
+              (a.salePrice || a.originalPrice) -
+              (b.salePrice || b.originalPrice)
+          )
       );
     } else if (filter === "HIGH_TO_LOW") {
-        setBooks(
-            books.slice().sort(
-              (a, b) =>
-                (b.salePrice || b.originalPrice) - (a.salePrice || a.originalPrice)
-            )
-          );
+      setBooks(
+        books
+          .slice()
+          .sort(
+            (a, b) =>
+              (b.salePrice || b.originalPrice) -
+              (a.salePrice || a.originalPrice)
+          )
+      );
     } else if (filter === "RATING") {
-        setBooks(
-            books.slice().sort(
-              (a, b) =>
-                (b.rating - a.rating)
-            )
-          );
+      setBooks(books.slice().sort((a, b) => b.rating - a.rating));
     }
   }
 
@@ -55,7 +56,7 @@ const Books = ({ books: initialBooks }) => {
               </div>
               <div className="books">
                 {books.map((book) => (
-                        <Book book={book} key={book.id} />
+                  <Book book={book} key={book.id} />
                 ))}
               </div>
             </div>
